@@ -4,7 +4,25 @@
 
 [node name="Game" type="Node2D" unique_id=1974316586]
 
+[node name="circle2" parent="." unique_id=1353947135 instance=ExtResource("1_uwrxv")]
+position = Vector2(-308, 233)
+
 [node name="circle" parent="." unique_id=1297860373 instance=ExtResource("1_uwrxv")]
-position = Vector2(-2, -4)
+position = Vector2(-187, -98)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1537942329]
+position = Vector2(44, 28)
+
+[node name="circle3" parent="." unique_id=751239768 instance=ExtResource("1_uwrxv")]
+position = Vector2(78, 249)
+
+[node name="circle4" parent="." unique_id=1894523480 instance=ExtResource("1_uwrxv")]
+position = Vector2(238, 133)
+
+[node name="circle5" parent="." unique_id=1405582568 instance=ExtResource("1_uwrxv")]
+position = Vector2(238, -156)
+
+[node name="circle6" parent="." unique_id=1582328051 instance=ExtResource("1_uwrxv")]
+position = Vector2(-299, 76)
+
+[connection signal="mouse_exited" from="circle" to="circle" method="_on_mouse_exited"]
