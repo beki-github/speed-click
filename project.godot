@@ -19,6 +19,12 @@ config/icon="res://assets/icon.svg"
 
 Game="*uid://bqxpc045y286c"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/stretch/mode="viewport"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

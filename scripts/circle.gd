@@ -11,4 +11,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		print("circle listen to your event")
 		x+=1
 		print(x)
+		cleared.emit()
 		queue_free()

@@ -1,14 +1,17 @@
 extends Node2D
 
-var circle_node=preload("res://scenes/circle.tscn")
-# Called when the node enters the scene tree for the first time.
+var circle_node = preload("res://scenes/circle.tscn")
+
 func _ready() -> void:
-	var new_circle=circle_node.instantiate()
+	spawn_circle()
+
+func spawn_circle():
+	var new_circle = circle_node.instantiate()
+	new_circle.cleared.connect(_on_circle_cleared)
 	add_child(new_circle)
 
+func _on_circle_cleared():
+	spawn_circle()
 
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
