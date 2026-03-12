@@ -4,6 +4,8 @@ var circle_node = preload("res://scenes/circle.tscn")
 
 var rng=RandomNumberGenerator.new()
 
+var score = 0
+
 func _ready() -> void:
 	spawn_circle()
 
@@ -14,6 +16,8 @@ func spawn_circle():
 	add_child(new_circle)
 
 func _on_circle_cleared():
+	score += 1
+	get_node("Camera2D/Score").text = str(score)
 	spawn_circle()
 
 func _process(_delta: float) -> void:

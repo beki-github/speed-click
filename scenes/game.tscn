@@ -8,3 +8,16 @@ script = ExtResource("1_yqjtg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1537942329]
 position = Vector2(-6, 4)
+
+[node name="Label" type="Label" parent="Camera2D" unique_id=1223193578]
+offset_left = -380.0
+offset_top = -290.0
+offset_right = -328.0
+offset_bottom = -267.0
+text = "Score: "
+
+[node name="Score" type="Label" parent="Camera2D" unique_id=1559126929]
+offset_left = -330.0
+offset_top = -288.0
+offset_right = -290.0
+offset_bottom = -265.0
