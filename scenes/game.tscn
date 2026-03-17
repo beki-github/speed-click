@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://q4sxnah6jg1x"]
 
 [ext_resource type="Script" uid="uid://bqxpc045y286c" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="Shader" uid="uid://c3sskalw6a0ys" path="res://shaders/game.gdshader" id="2_yqjtg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
+shader = ExtResource("2_yqjtg")
 
 [node name="Game" type="Node2D" unique_id=1974316586]
 position = Vector2(2, 0)
 script = ExtResource("1_yqjtg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=659132720]
+material = SubResource("ShaderMaterial_lnu2h")
+offset_left = -411.0
+offset_top = -292.0
+offset_right = 395.0
+offset_bottom = 307.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1537942329]
 position = Vector2(-6, 4)
