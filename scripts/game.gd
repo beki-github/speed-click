@@ -17,7 +17,7 @@ func spawn_circle():
 
 func _on_circle_cleared():
 	score += 1
-	get_node("Camera2D/Score").text = str(score)
+	get_node("Camera2D/Score").text = "Score: "+ str(score)
 	spawn_circle()
 
 func _process(_delta: float) -> void:
