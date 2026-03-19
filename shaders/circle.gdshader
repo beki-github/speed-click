@@ -1,12 +1,15 @@
 shader_type canvas_item;
-uniform vec4 circle_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 
 void fragment() {
-    // UV goes from (0,0) at top-left to (1,1) at bottom-right
-    float dist = distance(UV, vec2(0.5, 0.5));
+  
+    vec2 centered_uv = UV * 2.0 - 1.0;
+    float d = length(centered_uv);
+    float ring_distance = abs(d - 0.3);
+    float mask = smoothstep(0.05, 0.15, ring_distance);
+    vec3 bg_color = vec3(0.008, 0.016, 0.15); 
     
-    float alpha = 1.0 - smoothstep(0.08, 0.3, dist);
+    vec3 ring_color = vec3(0.0, 1.0, 1.0);
+    vec3 final_rgb = mix(ring_color, bg_color, mask);
     
-    // Apply the chosen color and the calculated transparency
-    COLOR = vec4(vec3(sin(TIME*10.0)), alpha);
+    COLOR = vec4(final_rgb, 1.0);
 }

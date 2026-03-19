@@ -44,6 +44,7 @@ func _on_circle_cleared():
 		return
 	score += 1
 	get_node("/root/Game/Camera2D/Score").text = str(score)
+	get_node("Camera2D/Score").text = "Score: "+ str(score)
 	spawn_circle()
 
 func _process(_delta: float) -> void:
