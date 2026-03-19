@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b2bcbant3vqvd"]
+
+[ext_resource type="Script" uid="uid://b8bvqax8fntur" path="res://scripts/game_over.gd" id="1_6bcno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihdkw"]
+bg_color = Color(0.6318046, 0.004249175, 0.99452204, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameOver" type="Node2D" unique_id=943168743]
+script = ExtResource("1_6bcno")
+
+[node name="Control" type="Control" parent="." unique_id=216822597]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -249.0
+offset_top = -175.0
+offset_right = 268.0
+offset_bottom = 157.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1677080899]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 513.0
+offset_bottom = 332.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ihdkw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Game Over text" type="Label" parent="Control/Panel" unique_id=570241635]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 35.0
+offset_right = 376.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="scoresLabel" type="Label" parent="Control/Panel" unique_id=434209419]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 101.0
+offset_right = 390.0
+offset_bottom = 165.0
+text = "Score: "
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LatestScore" type="Label" parent="Control/Panel" unique_id=1381674307]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 100.0
+offset_right = 313.0
+offset_bottom = 123.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryBtn" type="Button" parent="Control/Panel" unique_id=56388492]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 175.0
+offset_right = 240.0
+offset_bottom = 206.0
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitBtn" type="Button" parent="Control/Panel" unique_id=1375603302]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 175.0
+offset_right = 328.0
+offset_bottom = 206.0
+theme_override_colors/icon_hover_color = Color(0.9777946, 0, 0.18490115, 1)
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Control/Panel/RetryBtn" to="." method="_on_retry_btn_pressed"]
+[connection signal="pressed" from="Control/Panel/ExitBtn" to="." method="_on_exit_btn_pressed"]
