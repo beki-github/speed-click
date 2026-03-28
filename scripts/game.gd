@@ -50,7 +50,7 @@ func _on_circle_cleared():
 	spawn_circle()
 
 func _process(_delta: float) -> void:
-	pass
+	get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
 
 
 func _on_timer_timeout() -> void:

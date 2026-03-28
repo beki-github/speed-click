@@ -26,6 +26,14 @@ offset_top = -298.0
 offset_right = -357.0
 offset_bottom = -275.0
 
+[node name="Timer" type="Label" parent="Camera2D" unique_id=1812738226]
+offset_left = 306.0
+offset_top = -297.0
+offset_right = 398.0
+offset_bottom = -274.0
+text = "timer:"
+vertical_alignment = 1
+
 [node name="Timer" type="Timer" parent="." unique_id=527608577]
 wait_time = 10.0
 one_shot = true
