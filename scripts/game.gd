@@ -1,19 +1,29 @@
 extends Node2D
 
 var circle_node = preload("res://scenes/circle.tscn")
-
 var game_over = preload("res://scenes/GameOver.tscn")
-
 var rng=RandomNumberGenerator.new()
-
 var score = 0
-
 var startTime = 20
+var game_running:=true
 
-var game_running = true
+
+func start_Game() -> void:
+	game_running = true
+	score = 0
+	$Timer.start()
+	get_node("/root/Game/Camera2D/Score").text = "0"
+	for child in get_children():
+		if child is Area2D:
+			child.queue_free()
+	spawn_circle()
+
 
 func _ready() -> void:
-	spawn_circle()
+	start_Game()
+	
+
+	
 	
 func Game_over_box():
 	var game_over_tab = game_over.instantiate()
@@ -22,14 +32,7 @@ func Game_over_box():
 	add_child(game_over_tab)
 
 func _on_retry_pressed():
-	game_running = true
-	score = 0
-	$Camera2D/Timer.start()
-	get_node("/root/Game/Camera2D/Score").text = "0"
-	for child in get_children():
-		if child is Area2D:
-			child.queue_free()
-	spawn_circle()
+	start_Game()
 
 func spawn_circle():
 	if !game_running:
@@ -43,8 +46,7 @@ func _on_circle_cleared():
 	if !game_running:
 		return
 	score += 1
-	get_node("/root/Game/Camera2D/Score").text = str(score)
-	get_node("Camera2D/Score").text = "Score: "+ str(score)
+	get_node("/root/Game/Camera2D/Score").text = "Score: "+str(score)
 	spawn_circle()
 
 func _process(_delta: float) -> void:
