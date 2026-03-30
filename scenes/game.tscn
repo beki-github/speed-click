@@ -12,10 +12,10 @@ script = ExtResource("1_yqjtg")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=659132720]
 material = SubResource("ShaderMaterial_lnu2h")
-offset_left = -405.0
-offset_top = -295.0
-offset_right = 395.0
-offset_bottom = 307.0
+offset_left = -419.0
+offset_top = -308.0
+offset_right = 406.0
+offset_bottom = 313.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1537942329]
 position = Vector2(-6, 4)

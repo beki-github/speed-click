@@ -2,13 +2,15 @@ extends Node2D
 
 var circle_node = preload("res://scenes/circle.tscn")
 var game_over = preload("res://scenes/GameOver.tscn")
+var tail_node=preload("res://scenes/tail.tscn")
 var rng=RandomNumberGenerator.new()
 var score = 0
 var startTime = 20
 var game_running:=true
 
-
+var tail
 func start_Game() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	game_running = true
 	score = 0
 	$Timer.start()
@@ -17,10 +19,16 @@ func start_Game() -> void:
 		if child is Area2D:
 			child.queue_free()
 	spawn_circle()
+	tail=tail_node.instantiate()
+	add_child(tail)
+	
+	
+	
 
 
 func _ready() -> void:
 	start_Game()
+	
 	
 
 	
@@ -51,8 +59,13 @@ func _on_circle_cleared():
 
 func _process(_delta: float) -> void:
 	get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
+	var mouse_pos=get_global_mouse_position()
+	if tail:
+		tail.global_position=tail.global_position.lerp(mouse_pos,0.6)
+	
 
 
 func _on_timer_timeout() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_running = false
 	Game_over_box()

@@ -4,7 +4,7 @@ void fragment() {
   
     vec2 centered_uv = UV * 2.0 - 1.0;
     float d = length(centered_uv);
-    float ring_distance = d - 0.2;
+    float ring_distance = d - 0.1;
     float mask = smoothstep(0.05, 0.15, ring_distance);
     vec3 bg_color = vec3(0.008, 0.016, 0.15); 
     
