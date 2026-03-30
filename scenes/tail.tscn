@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ccx2hs876q0ro"]
+
+[ext_resource type="Shader" uid="uid://c7ypy4mg6waca" path="res://shaders/tail.gdshader" id="1_wne8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8wpl"]
+radius = 7.615773
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsmqp"]
+shader = ExtResource("1_wne8n")
+
+[node name="tail" type="Area2D" unique_id=847818008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702861867]
+shape = SubResource("CircleShape2D_o8wpl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2013078660]
+material = SubResource("ShaderMaterial_dsmqp")
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
