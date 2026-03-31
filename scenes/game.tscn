@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bqxpc045y286c" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Shader" uid="uid://c3sskalw6a0ys" path="res://shaders/game.gdshader" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ibckfgb71ekg" path="res://scenes/ball.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dlfk5rc07fj20" path="res://scenes/walls.tscn" id="4_lbhrr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("2_yqjtg")
@@ -38,5 +40,11 @@ vertical_alignment = 1
 wait_time = 181.761
 one_shot = true
 autostart = true
+
+[node name="ball" parent="." unique_id=885168186 instance=ExtResource("3_lnu2h")]
+position = Vector2(0, -13)
+
+[node name="walls" parent="." unique_id=1904335899 instance=ExtResource("4_lbhrr")]
+position = Vector2(-404, -298)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
