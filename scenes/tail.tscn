@@ -8,7 +8,7 @@ radius = 22.022715
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dsmqp"]
 shader = ExtResource("1_wne8n")
 
-[node name="tail" type="Area2D" unique_id=847818008]
+[node name="tail" type="Area2D" unique_id=847818008 groups=["tail_group"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702861867]
 shape = SubResource("CircleShape2D_o8wpl")

@@ -35,7 +35,7 @@ text = "timer:"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=527608577]
-wait_time = 20.648
+wait_time = 181.761
 one_shot = true
 autostart = true
 

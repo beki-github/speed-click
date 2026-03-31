@@ -8,9 +8,8 @@ var score = 0
 var startTime = 20
 var game_running:=true
 
-var tail
-
 var tail_array=[]
+var tail_num:=20
 func start_Game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	game_running = true
@@ -21,10 +20,14 @@ func start_Game() -> void:
 		if child is Area2D and child.name!="tail":
 			child.queue_free()
 	spawn_circle()
-	if tail == null:
-		tail=tail_node.instantiate()
-		tail.scale=Vector2(0.15,0.15)
-		add_child(tail)
+	if tail_array.is_empty():
+		for tail in tail_num:
+			var tail_=tail_node.instantiate()
+			tail_.position=Vector2(0,0)
+			tail_.scale=Vector2(0.15,0.15)
+			add_child(tail_)
+			tail_array.append(tail_)
+			
 	
 	
 	
@@ -64,9 +67,14 @@ func _on_circle_cleared():
 func _process(_delta: float) -> void:
 	get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
 	var mouse_pos=get_global_mouse_position()
-	if tail :
-		tail.global_position=tail.global_position.lerp(mouse_pos,1)
-
+	if !tail_array.is_empty():
+		for index in range(0,tail_array.size()):
+			if index==0:
+				tail_array[index].global_position=tail_array[index].global_position.lerp(mouse_pos,1)
+			else:
+				tail_array[index].global_position=tail_array[index].global_position.lerp(tail_array[index-1].global_position,0.5)
+	else:
+		print("the tail is fucked up")
 
 func _on_timer_timeout() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
