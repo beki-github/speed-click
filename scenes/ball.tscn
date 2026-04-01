@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
 radius = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
+radius = 15.033297
+
 [node name="ball" type="CharacterBody2D" unique_id=885168186]
 script = ExtResource("1_cxlvu")
 
@@ -15,3 +18,10 @@ shape = SubResource("CircleShape2D_cxlvu")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884715604]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_7s4qf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=494607549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=145771139]
+shape = SubResource("CircleShape2D_f7cbr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
