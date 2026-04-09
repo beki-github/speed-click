@@ -11,6 +11,7 @@ var game_running:=true
 
 var tail_array=[]
 var tail_num:=10
+var tail_size
 
 func spawn_circle():
 	if !game_running:
@@ -42,11 +43,13 @@ func start_Game() -> void:
 			child.queue_free()
 	spawn_circle()
 	spawn_ball()
+	tail_size=0.15
 	if tail_array.is_empty():
 		for tail in tail_num:
 			var tail_=tail_node.instantiate()
 			tail_.position=Vector2(0,0)
-			tail_.scale=Vector2(0.15,0.15)
+			tail_.scale=Vector2(tail_size,tail_size)
+			tail_size*=0.90
 			add_child(tail_)
 			tail_array.append(tail_)
 			
