@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://ibckfgb71ekg"]
 
-[ext_resource type="Texture2D" uid="uid://c2401j7825mj5" path="res://assets/icon.svg" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://dwlnbrpnkxsrk" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="Shader" uid="uid://ch8m8l5ax7yg3" path="res://shaders/circle.gdshader" id="2_cxlvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
-radius = 14.0
+radius = 13.341664
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7cbr"]
-radius = 15.033297
+radius = 11.18034
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7cbr"]
+shader = ExtResource("2_cxlvu")
 
 [node name="ball" type="CharacterBody2D" unique_id=885168186]
 script = ExtResource("1_cxlvu")
@@ -15,13 +18,17 @@ script = ExtResource("1_cxlvu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=314496846]
 shape = SubResource("CircleShape2D_cxlvu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884715604]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_7s4qf")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=494607549]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=145771139]
 shape = SubResource("CircleShape2D_f7cbr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=233728551]
+material = SubResource("ShaderMaterial_f7cbr")
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 25.0
+offset_bottom = 27.0
+scale = Vector2(0.75, 0.75)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
