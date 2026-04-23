@@ -78,6 +78,7 @@ func _physics_process(delta: float) -> void:
 		print("the tail is fucked up")
 
 func on_ball_cleared():
+	freeze_time(0.25)
 	spawn_ball()
 
 func _on_circle_cleared():
@@ -95,3 +96,7 @@ func _on_timer_timeout() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_running = false
 	Game_over_box()
+func freeze_time(duration: float = 1.0):
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0

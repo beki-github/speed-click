@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqxpc045y286c" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Shader" uid="uid://c3sskalw6a0ys" path="res://shaders/game.gdshader" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dviuxbkuay6r8" path="res://scenes/start_menu.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://dlfk5rc07fj20" path="res://scenes/walls.tscn" id="4_lbhrr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
@@ -40,5 +41,7 @@ wait_time = 31.308
 
 [node name="walls" parent="." unique_id=1904335899 instance=ExtResource("4_lbhrr")]
 position = Vector2(-404, -298)
+
+[node name="Panel" parent="." unique_id=649730285 instance=ExtResource("4_iywne")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
