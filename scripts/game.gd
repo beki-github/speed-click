@@ -4,10 +4,11 @@ var circle_node = preload("res://scenes/circle.tscn")
 var ball_node=preload("res://scenes/ball.tscn")
 var game_over = preload("res://scenes/GameOver.tscn")
 var tail_node=preload("res://scenes/tail.tscn")
+var start_menu=preload("res://scenes/start_menu.tscn")
 var rng=RandomNumberGenerator.new()
 var score = 0
 var startTime = 20
-var game_running:=true
+var game_running:=false
 
 var tail_array=[]
 var tail_num:=10
@@ -63,19 +64,21 @@ func Game_over_box():
 
 
 func _ready() -> void:
-	start_Game()
+	var start_menu_child=start_menu.instantiate()
+	add_child(start_menu_child)
 
 func _physics_process(delta: float) -> void:
-	get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
-	var mouse_pos=get_global_mouse_position()
-	if !tail_array.is_empty():
-		for index in range(0,tail_array.size()):
-			if index==0:
-				tail_array[index].global_position=tail_array[index].global_position.lerp(mouse_pos,1)
-			else:
-				tail_array[index].global_position=tail_array[index].global_position.lerp(tail_array[index-1].global_position,0.5)
-	else:
-		print("the tail is fucked up")
+	if game_running:
+		get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
+		var mouse_pos=get_global_mouse_position()
+		if !tail_array.is_empty():
+			for index in range(0,tail_array.size()):
+				if index==0:
+					tail_array[index].global_position=tail_array[index].global_position.lerp(mouse_pos,1)
+				else:
+					tail_array[index].global_position=tail_array[index].global_position.lerp(tail_array[index-1].global_position,0.5)
+		else:
+			print("the tail is fucked up")
 
 func on_ball_cleared():
 	freeze_time(0.25)
