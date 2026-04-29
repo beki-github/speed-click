@@ -2,7 +2,7 @@ extends CharacterBody2D
 signal caught_ball
 
 var direction: Vector2
-var speed: int =2000
+var speed: int =1750
 var screen_size:Vector2
 
 

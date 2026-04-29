@@ -65,6 +65,7 @@ func Game_over_box():
 
 func _ready() -> void:
 	var start_menu_child=start_menu.instantiate()
+	start_menu_child.start_clicked.connect(on_start_clicked)
 	add_child(start_menu_child)
 
 func _physics_process(delta: float) -> void:
@@ -80,8 +81,12 @@ func _physics_process(delta: float) -> void:
 		else:
 			print("the tail is fucked up")
 
+func on_start_clicked():
+	start_Game()
+	
+
 func on_ball_cleared():
-	freeze_time(0.25)
+	freeze_time(0.75)
 	spawn_ball()
 
 func _on_circle_cleared():
