@@ -86,24 +86,28 @@ func on_start_clicked():
 	
 
 func on_ball_cleared():
+	score=score-5
 	freeze_time(0.75)
 	spawn_ball()
 
 func _on_circle_cleared():
 	if !game_running:
 		return
-	score += 1
+	score += 10
 	get_node("/root/Game/Camera2D/Score").text = "Score: "+str(score)
 	spawn_circle()
 	
 
 func _on_retry_pressed():
 	start_Game()
+	
 
 func _on_timer_timeout() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	game_running = false
 	Game_over_box()
+	game_running = false
+	
+
 func freeze_time(duration: float = 1.0):
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(duration, true, false, true).timeout
