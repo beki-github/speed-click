@@ -5,6 +5,7 @@ var ball_node=preload("res://scenes/ball.tscn")
 var game_over = preload("res://scenes/GameOver.tscn")
 var tail_node=preload("res://scenes/tail.tscn")
 var start_menu=preload("res://scenes/start_menu.tscn")
+var Game_Over=preload("res://scenes/Game_Over.tscn")
 var rng=RandomNumberGenerator.new()
 var score = 0
 var startTime = 20
@@ -57,16 +58,22 @@ func start_Game() -> void:
 
 
 func Game_over_box():
-	var game_over_tab = game_over.instantiate()
-	game_over_tab.get_node("Control/Panel/LatestScore").text = str(score)
-	game_over_tab.retry_pressed.connect(_on_retry_pressed)
-	add_child(game_over_tab)
-
+	#var game_over_tab = game_over.instantiate()
+	#game_over_tab.get_node("Control/Panel/scoresLabel").text += str(score)
+	#game_over_tab.retry_pressed.connect(_on_retry_pressed)
+	#add_child(game_over_tab)
+	var game_over=Game_Over.instantiate()
+	game_over.retry_pressed.connect(_on_retry_pressed)
+	game_over.get_node("highScore").text+=str(340)
+	game_over.get_node("currentScore").text+=str(score)
+	add_child(game_over)
 
 func _ready() -> void:
-	var start_menu_child=start_menu.instantiate()
-	start_menu_child.start_clicked.connect(on_start_clicked)
-	add_child(start_menu_child)
+	#var start_menu_child=start_menu.instantiate()
+	#start_menu_child.start_clicked.connect(on_start_clicked)
+	#add_child(start_menu_child)
+	Game_over_box()
+	
 
 func _physics_process(delta: float) -> void:
 	if game_running:
