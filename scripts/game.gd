@@ -58,10 +58,6 @@ func start_Game() -> void:
 
 
 func Game_over_box():
-	#var game_over_tab = game_over.instantiate()
-	#game_over_tab.get_node("Control/Panel/scoresLabel").text += str(score)
-	#game_over_tab.retry_pressed.connect(_on_retry_pressed)
-	#add_child(game_over_tab)
 	var game_over=Game_Over.instantiate()
 	game_over.retry_pressed.connect(_on_retry_pressed)
 	game_over.get_node("highScore").text+=str(340)
@@ -69,15 +65,16 @@ func Game_over_box():
 	add_child(game_over)
 
 func _ready() -> void:
-	#var start_menu_child=start_menu.instantiate()
-	#start_menu_child.start_clicked.connect(on_start_clicked)
-	#add_child(start_menu_child)
-	Game_over_box()
+	var start_menu_child=start_menu.instantiate()
+	start_menu_child.start_clicked.connect(on_start_clicked)
+	add_child(start_menu_child)
+	
 	
 
 func _physics_process(delta: float) -> void:
 	if game_running:
 		get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
+		get_node("/root/Game/Camera2D/Score").text = "Score: "+str(score)
 		var mouse_pos=get_global_mouse_position()
 		if !tail_array.is_empty():
 			for index in range(0,tail_array.size()):
@@ -93,15 +90,14 @@ func on_start_clicked():
 	
 
 func on_ball_cleared():
-	score=score-5
 	freeze_time(0.75)
+	score=score-100
 	spawn_ball()
 
 func _on_circle_cleared():
 	if !game_running:
 		return
 	score += 10
-	get_node("/root/Game/Camera2D/Score").text = "Score: "+str(score)
 	spawn_circle()
 	
 
