@@ -2,11 +2,12 @@ extends Node2D
 
 var circle_node = preload("res://scenes/circle.tscn")
 var ball_node=preload("res://scenes/ball.tscn")
-var game_over = preload("res://scenes/GameOver.tscn")
 var tail_node=preload("res://scenes/tail.tscn")
 var start_menu=preload("res://scenes/start_menu.tscn")
 var Game_Over=preload("res://scenes/Game_Over.tscn")
 var rng=RandomNumberGenerator.new()
+
+
 var score = 0
 var startTime = 20
 var game_running:=false
@@ -22,8 +23,7 @@ func spawn_circle():
 	new_circle.cleared.connect(_on_circle_cleared)
 	new_circle.position=Vector2(rng.randi_range(-370,370),rng.randi_range(-270,270))
 	new_circle.scale=Vector2(0.25,0.25)
-	add_child(new_circle)
-	
+	call_deferred("add_child",new_circle)
 
 func spawn_ball():
 	if !game_running:
@@ -31,7 +31,7 @@ func spawn_ball():
 	var new_ball=ball_node.instantiate()
 	new_ball.position=Vector2(rng.randi_range(-370,370),rng.randi_range(-270,270))
 	new_ball.caught_ball.connect(on_ball_cleared)
-	add_child(new_ball)
+	call_deferred("add_child",new_ball)
 
 
 func start_Game() -> void:
@@ -71,7 +71,7 @@ func _ready() -> void:
 	
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if game_running:
 		get_node("/root/Game/Camera2D/Timer").text = "Timer: "+str(int($Timer.time_left))
 		get_node("/root/Game/Camera2D/Score").text = "Score: "+str(score)

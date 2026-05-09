@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		velocity=velocity.bounce(collison.get_normal())
 
 func get_random_direction() -> Vector2:
-	var new_direction: Vector2
 	var random_angle=randf_range(0,TAU)
 	return Vector2.RIGHT.rotated(random_angle).normalized()
 
