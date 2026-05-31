@@ -37,6 +37,7 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=527608577]
 wait_time = 31.308
+ignore_time_scale = true
 
 [node name="walls" parent="." unique_id=1904335899 instance=ExtResource("4_lbhrr")]
 position = Vector2(-404, -298)

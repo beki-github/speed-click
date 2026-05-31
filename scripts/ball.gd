@@ -9,7 +9,14 @@ var screen_size:Vector2
 var is_hit=false
 var score=10
 
+func _on_speed_increase(speed_increase: float)->void:
+	speed+=speed_increase
+	print("speed increased to ",speed)
+	
+	
+
 func _ready():
+	GlobalTimer.speed_increase.connect(_on_speed_increase)
 	direction=get_random_direction()
 	velocity=direction*speed
 	

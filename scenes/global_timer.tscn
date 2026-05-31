@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b8vubdciqqgs4"]
+
+[ext_resource type="Script" uid="uid://bpg80mkbbt24b" path="res://scripts/global_timer.gd" id="1_glumw"]
+
+[node name="global_timer" type="Node" unique_id=1346708735]
+script = ExtResource("1_glumw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1877618063]

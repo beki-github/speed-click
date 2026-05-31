@@ -91,13 +91,13 @@ func on_start_clicked():
 
 func on_ball_cleared():
 	freeze_time(0.75)
-	score=score-100
+	score=score-10
 	spawn_ball()
 
 func _on_circle_cleared():
 	if !game_running:
 		return
-	score += 10
+	score += 50
 	spawn_circle()
 	
 
