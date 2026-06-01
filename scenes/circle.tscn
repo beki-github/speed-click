@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://ch8m8l5ax7yg3" path="res://shaders/circle.gdshader" id="2_3e3c1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3e3c1"]
-radius = 37.165173
+radius = 33.01515
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g1fdt"]
 shader = ExtResource("2_3e3c1")

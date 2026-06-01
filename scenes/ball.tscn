@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwlnbrpnkxsrk" path="res://scripts/ball.gd" id="1_cxlvu"]
 [ext_resource type="Shader" uid="uid://ch8m8l5ax7yg3" path="res://shaders/circle.gdshader" id="2_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://cg715dv07gfck" path="res://assets/sounds/bounce.wav" id="3_f7cbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
 radius = 13.341664
@@ -30,5 +31,9 @@ offset_top = -15.0
 offset_right = 25.0
 offset_bottom = 27.0
 scale = Vector2(0.75, 0.75)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=714131044]
+stream = ExtResource("3_f7cbr")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

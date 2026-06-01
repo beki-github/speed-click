@@ -111,6 +111,7 @@ func _on_timer_timeout() -> void:
 	game_running = false
 	
 
+
 func freeze_time(duration: float = 1.0):
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(duration, true, false, true).timeout

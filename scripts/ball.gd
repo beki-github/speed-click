@@ -1,17 +1,17 @@
 extends CharacterBody2D
 signal caught_ball
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var direction: Vector2
-var speed: int =1750
+var speed =1750.0
 var screen_size:Vector2
 
 
 var is_hit=false
 var score=10
 
-func _on_speed_increase(speed_increase: float)->void:
-	speed+=speed_increase
-	print("speed increased to ",speed)
+func _on_speed_increase(current_speed: float)->void:
+	speed=current_speed
 	
 	
 
@@ -23,6 +23,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var collison=move_and_collide(velocity*delta)
 	if collison:
+		audio_stream_player_2d.play()
 		velocity=velocity.bounce(collison.get_normal())
 
 func get_random_direction() -> Vector2:
