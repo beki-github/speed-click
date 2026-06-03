@@ -5,16 +5,30 @@ var ball_node=preload("res://scenes/ball.tscn")
 var tail_node=preload("res://scenes/tail.tscn")
 var start_menu=preload("res://scenes/start_menu.tscn")
 var Game_Over=preload("res://scenes/Game_Over.tscn")
+
 var rng=RandomNumberGenerator.new()
+@onready var h_box_container: HBoxContainer = $HBoxContainer
 
 
 var score = 0
 var startTime = 20
 var game_running:=false
 
+var lives_num:=10
 var tail_array=[]
 var tail_num:=10
 var tail_size
+
+
+
+func setup_hbox() -> void:
+	var spacing = 10
+	for i in 10:
+		var life_ = tail_node.instantiate()
+		life_.scale = Vector2(0.15, 0.15)
+		life_.position = Vector2((i * spacing)-60, -270)
+		life_.get_node("CollisionShape2D").disabled = true
+		add_child(life_)  # add directly to the scene, not HBox
 
 func spawn_circle():
 	if !game_running:
@@ -28,6 +42,7 @@ func spawn_circle():
 func spawn_ball():
 	if !game_running:
 		return
+	freeze_time(0.5)
 	var new_ball=ball_node.instantiate()
 	new_ball.position=Vector2(rng.randi_range(-370,370),rng.randi_range(-270,270))
 	new_ball.caught_ball.connect(on_ball_cleared)
@@ -65,6 +80,11 @@ func Game_over_box():
 	add_child(game_over)
 
 func _ready() -> void:
+	setup_hbox()
+	#for child in get_children():
+		#print(child)
+	for childh in h_box_container.get_children():
+		print(childh)
 	var start_menu_child=start_menu.instantiate()
 	start_menu_child.start_clicked.connect(on_start_clicked)
 	add_child(start_menu_child)
@@ -90,7 +110,6 @@ func on_start_clicked():
 	
 
 func on_ball_cleared():
-	freeze_time(0.75)
 	score=score-10
 	spawn_ball()
 

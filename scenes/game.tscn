@@ -41,4 +41,12 @@ wait_time = 31.308
 [node name="walls" parent="." unique_id=1904335899 instance=ExtResource("4_lbhrr")]
 position = Vector2(-404, -298)
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=83743183]
+offset_left = -213.0
+offset_top = -263.0
+offset_right = -48.0
+offset_bottom = -223.0
+scale = Vector2(1.5820508, 0.95353335)
+alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 signal caught_ball
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var bounce: AudioStreamPlayer2D = $bounce
+@onready var hit_animation: AnimationPlayer = $hit
+
 
 var direction: Vector2
 var speed =1750.0
@@ -23,7 +25,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var collison=move_and_collide(velocity*delta)
 	if collison:
-		audio_stream_player_2d.play()
+		bounce.play()
 		velocity=velocity.bounce(collison.get_normal())
 
 func get_random_direction() -> Vector2:
@@ -38,4 +40,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("tail_group"):
 		is_hit=true
 		caught_ball.emit()
-		queue_free()
+		hit_animation.play("hit_animation")
+		

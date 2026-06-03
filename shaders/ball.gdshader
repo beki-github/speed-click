@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 const vec3 bg_color = vec3(0.008, 0.016, 0.15); 
-const vec3 ring_color = vec3(0.0, 1.0, 1.0);
+const vec3 ring_color = vec3(1.0, 1.0, 1.0);
 
 void fragment() {
     vec2 centered_uv = UV * 2.0 - 1.0;
