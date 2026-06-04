@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bip8js1e3oq82"]
+
+[ext_resource type="Shader" uid="uid://c7ypy4mg6waca" path="res://shaders/tail.gdshader" id="1_yq00f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsmqp"]
+shader = ExtResource("1_yq00f")
+
+[node name="life_UI" type="Control" unique_id=270290507]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2013078660]
+material = SubResource("ShaderMaterial_dsmqp")
+layout_mode = 0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0

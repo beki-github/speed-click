@@ -5,6 +5,7 @@ var ball_node=preload("res://scenes/ball.tscn")
 var tail_node=preload("res://scenes/tail.tscn")
 var start_menu=preload("res://scenes/start_menu.tscn")
 var Game_Over=preload("res://scenes/Game_Over.tscn")
+var life_ui_node=preload("res://scenes/life_UI.tscn")
 
 var rng=RandomNumberGenerator.new()
 @onready var h_box_container: HBoxContainer = $HBoxContainer
@@ -22,13 +23,12 @@ var tail_size
 
 
 func setup_hbox() -> void:
-	var spacing = 10
+	var spacing = 8
+	h_box_container.add_theme_constant_override("separation", spacing)
 	for i in 10:
-		var life_ = tail_node.instantiate()
-		life_.scale = Vector2(0.15, 0.15)
-		life_.position = Vector2((i * spacing)-60, -270)
-		life_.get_node("CollisionShape2D").disabled = true
-		add_child(life_)  # add directly to the scene, not HBox
+		var life_ = life_ui_node.instantiate()
+		life_.get_node("ColorRect").scale = Vector2(0.10, 0.15)
+		h_box_container.add_child(life_)
 
 func spawn_circle():
 	if !game_running:
