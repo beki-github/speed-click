@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://djmaoef2hl31x"
+
 [autoload]
 
 GlobalTimer="*uid://b8vubdciqqgs4"
@@ -23,7 +27,7 @@ GlobalTimer="*uid://b8vubdciqqgs4"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [physics]
 

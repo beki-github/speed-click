@@ -14,6 +14,7 @@ shader = ExtResource("1_wne8n")
 shape = SubResource("CircleShape2D_o8wpl")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2013078660]
+texture_filter = 2
 material = SubResource("ShaderMaterial_dsmqp")
 offset_left = -19.0
 offset_top = -20.0

@@ -1,6 +1,6 @@
 extends Area2D
 signal cleared
-
+@onready var pickup: AnimationPlayer = $pickup
 var is_hit:=false
 
 func _on_area_entered(area: Area2D) -> void:
@@ -9,4 +9,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("tail_group"):
 		is_hit=true
 		cleared.emit()
-		queue_free()
+		pickup.play("pickup_animation")
+		

@@ -53,6 +53,7 @@ func start_Game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	game_running = true
 	score = 0
+	setup_hbox()
 	$Timer.start()
 	get_node("/root/Game/Camera2D/Score").text = "0"
 	for child in get_children():
@@ -72,7 +73,9 @@ func start_Game() -> void:
 			
 
 
-func Game_over_box():
+func Game_over():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	game_running=false
 	var game_over=Game_Over.instantiate()
 	game_over.retry_pressed.connect(_on_retry_pressed)
 	game_over.get_node("highScore").text+=str(340)
@@ -80,11 +83,6 @@ func Game_over_box():
 	add_child(game_over)
 
 func _ready() -> void:
-	setup_hbox()
-	#for child in get_children():
-		#print(child)
-	for childh in h_box_container.get_children():
-		print(childh)
 	var start_menu_child=start_menu.instantiate()
 	start_menu_child.start_clicked.connect(on_start_clicked)
 	add_child(start_menu_child)
@@ -101,7 +99,7 @@ func _physics_process(_delta: float) -> void:
 				if index==0:
 					tail_array[index].global_position=tail_array[index].global_position.lerp(mouse_pos,1)
 				else:
-					tail_array[index].global_position=tail_array[index].global_position.lerp(tail_array[index-1].global_position,0.5)
+					tail_array[index].global_position=tail_array[index].global_position.lerp(tail_array[index-1].global_position,0.55)
 		else:
 			print("the tail is fucked up")
 
@@ -111,7 +109,11 @@ func on_start_clicked():
 
 func on_ball_cleared():
 	score=score-10
-	spawn_ball()
+	if h_box_container.get_child_count() >1:
+		h_box_container.get_child(-1).queue_free()
+		spawn_ball()
+	else:
+		Game_over()
 
 func _on_circle_cleared():
 	if !game_running:
@@ -125,9 +127,10 @@ func _on_retry_pressed():
 	
 
 func _on_timer_timeout() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Game_over_box()
-	game_running = false
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Game_over_box()
+	#game_running = false
+	pass
 	
 
 
