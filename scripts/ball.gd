@@ -7,6 +7,7 @@ signal caught_ball
 var direction: Vector2
 var speed =1750.0
 var screen_size:Vector2
+@onready var on_load: AnimationPlayer = $on_load
 
 
 var is_hit=false
@@ -18,6 +19,7 @@ func _on_speed_increase(current_speed: float)->void:
 	
 
 func _ready():
+	on_load.play("on_load")
 	GlobalTimer.speed_increase.connect(_on_speed_increase)
 	direction=get_random_direction()
 	velocity=direction*speed
