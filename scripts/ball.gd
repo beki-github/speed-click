@@ -3,20 +3,16 @@ signal caught_ball
 @onready var bounce: AudioStreamPlayer2D = $bounce
 @onready var hit_animation: AnimationPlayer = $hit
 
-
 var direction: Vector2
 var speed =1750.0
 var screen_size:Vector2
 @onready var on_load: AnimationPlayer = $on_load
-
 
 var is_hit=false
 var score=10
 
 func _on_speed_increase(current_speed: float)->void:
 	speed=current_speed
-	
-	
 
 func _ready():
 	on_load.play("on_load")
