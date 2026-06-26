@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwlnbrpnkxsrk" path="res://scripts/ball.gd" id="1_cxlvu"]
 [ext_resource type="Shader" uid="uid://blu68anbiroqc" path="res://shaders/ball.gdshader" id="2_4dx81"]
+[ext_resource type="Script" uid="uid://pbpi6vw5q3oe" path="res://scripts/line_2d.gd" id="3_eew57"]
 [ext_resource type="AudioStream" uid="uid://btqjjh36c7kwn" path="res://assets/sounds/bounce.wav" id="3_f7cbr"]
 [ext_resource type="AudioStream" uid="uid://ce83xef5riiu1" path="res://assets/sounds/tap.wav" id="4_4dx81"]
 
@@ -263,11 +264,17 @@ one_way_collision = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=233728551]
 material = SubResource("ShaderMaterial_eew57")
-offset_left = -15.0
+offset_left = -14.0
 offset_top = -15.0
-offset_right = 25.0
+offset_right = 26.0
 offset_bottom = 27.0
 scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Line2D" type="Line2D" parent="ColorRect" unique_id=43019171]
+top_level = true
+script = ExtResource("3_eew57")
 
 [node name="bounce" type="AudioStreamPlayer2D" parent="." unique_id=714131044]
 stream = ExtResource("3_f7cbr")

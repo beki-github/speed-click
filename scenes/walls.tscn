@@ -16,7 +16,7 @@ size = Vector2(819, 84)
 
 [node name="top" type="CollisionShape2D" parent="." unique_id=824641724]
 position = Vector2(445, -82)
-rotation = 3.200934
+rotation = 3.1764991
 shape = SubResource("RectangleShape2D_def3t")
 
 [node name="right" type="CollisionShape2D" parent="." unique_id=327191823]
@@ -30,6 +30,6 @@ rotation = 0.034906585
 shape = SubResource("RectangleShape2D_0lpna")
 
 [node name="bottom" type="CollisionShape2D" parent="." unique_id=328677204]
-position = Vector2(405, 652)
+position = Vector2(391.00003, 652.00006)
 rotation = 0.034906585
 shape = SubResource("RectangleShape2D_exnah")
