@@ -17,6 +17,7 @@ shader = ExtResource("2_4dx81")
 shader_parameter/color_r = 1.0
 shader_parameter/color_g = 1.0
 shader_parameter/color_b = 1.0
+shader_parameter/boost = 3.800000133
 
 [sub_resource type="Curve" id="Curve_eew57"]
 _data = [Vector2(0.21568629, 0.061538577), 0.0, 0.0, 0, 0, Vector2(0.6960784, 0.38461548), 1.4485215, 0.0, 0, 0, Vector2(0.7745098, 0.9846155), 0.9053255, 0.9053255, 0, 0, Vector2(0.9509804, 1), 0.0, 0.0, 0, 0]
@@ -257,6 +258,12 @@ _data = {
 &"on_load": SubResource("Animation_fwo8l")
 }
 
+[sub_resource type="Environment" id="Environment_ftie8"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.74
+glow_hdr_threshold = 2.2
+
 [node name="ball" type="CharacterBody2D" unique_id=885168186]
 script = ExtResource("1_cxlvu")
 
@@ -271,6 +278,7 @@ disabled = true
 one_way_collision = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=233728551]
+modulate = Color(1, 1, 0.9764706, 1)
 material = SubResource("ShaderMaterial_eew57")
 offset_left = -14.0
 offset_top = -15.0
@@ -306,5 +314,8 @@ stream = ExtResource("4_4dx81")
 
 [node name="on_load" type="AnimationPlayer" parent="." unique_id=609291375]
 libraries/ = SubResource("AnimationLibrary_v8l5b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=771512194]
+environment = SubResource("Environment_ftie8")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

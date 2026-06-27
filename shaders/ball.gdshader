@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float color_r: hint_range(0.0, 1.0, 0.1);
 uniform float color_g: hint_range(0.0, 1.0, 0.1);
 uniform float color_b: hint_range(0.0, 1.0, 0.1);
+uniform float boost : hint_range(1.0, 10.0) = 3.0;
 
 const vec3 bg_color = vec3(0.008, 0.016, 0.15); 
 
@@ -22,7 +23,7 @@ void fragment() {
     float final_mask = max(mask, edge_fade);
 	
     
-    vec3 final_rgb = mix(ring_color, bg_color, final_mask);
+    vec3 final_rgb = mix(ring_color*boost, bg_color, final_mask);
     
     COLOR = vec4(final_rgb, 1.0);
 }
