@@ -14,9 +14,6 @@ func _ready() -> void:
 	timer.autostart=true
 	timer.ignore_time_scale=true
 	timer.timeout.connect(_on_timeout)
-	
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_timeout()->void:
