@@ -20,8 +20,8 @@ shader_parameter/color_b = 1.0
 shader_parameter/boost = 3.800000133
 
 [sub_resource type="Curve" id="Curve_eew57"]
-_data = [Vector2(0.21568629, 0.061538577), 0.0, 0.0, 0, 0, Vector2(0.6960784, 0.38461548), 1.4485215, 0.0, 0, 0, Vector2(0.7745098, 0.9846155), 0.9053255, 0.9053255, 0, 0, Vector2(0.9509804, 1), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_jj7gd"]
 offsets = PackedFloat32Array(0.29605263, 0.4276316, 0.5197368, 0.625, 0.7565789, 0.8881579, 1)

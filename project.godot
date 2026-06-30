@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://djmaoef2hl31x"
 [autoload]
 
 GlobalTimer="*uid://b8vubdciqqgs4"
+Saver="*uid://cxsygtchohpoq"
 
 [display]
 

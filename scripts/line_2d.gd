@@ -17,6 +17,6 @@ func _process(_delta: float) -> void:
 	currentPosition.x+=heightParent
 	currentPosition.y+=heightParent
 	add_point(currentPosition)
-	if points.size()>25:
+	if points.size()>20:
 		remove_point(0)
 	pass

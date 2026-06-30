@@ -20,7 +20,7 @@ var tail_array=[]
 var tail_num:=10
 var tail_size
 
-
+var highScore
 
 func setup_hbox() -> void:
 	var spacing = 8
@@ -74,15 +74,19 @@ func start_Game() -> void:
 
 
 func Game_over():
+	if (highScore<score):
+		highScore=score
+		Saver.save_highscore(int(highScore))
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_running=false
 	var game_over=Game_Over.instantiate()
 	game_over.retry_pressed.connect(_on_retry_pressed)
-	game_over.get_node("highScore").text+=str(340)
+	game_over.get_node("highScore").text+=str(highScore)
 	game_over.get_node("currentScore").text+=str(score)
 	add_child(game_over)
 
 func _ready() -> void:
+	highScore=Saver.load_highscore()
 	var start_menu_child=start_menu.instantiate()
 	start_menu_child.start_clicked.connect(on_start_clicked)
 	add_child(start_menu_child)
